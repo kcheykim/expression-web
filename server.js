@@ -8,26 +8,34 @@ const { User } = require('./models');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+//app.use(require('./routes'));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/userdb', {
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/userdb', {
+//   useFindAndModify: false,
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/expression-web', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
-mongoose.set('useCreateIndex', true);
+// mongoose.set('useCreateIndex', true);
 mongoose.set('debug', true);
 
-app.post('/submit', ({ body }, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+// app.post('/submit', ({ body }, res) => {
+//   User.create(body)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});
+// app.listen(PORT, () => {
+//   console.log(`App running on port ${PORT}!`);
+// });
+
+app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));

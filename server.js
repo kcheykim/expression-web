@@ -4,38 +4,16 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const { User } = require('./models');
-
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.use(require('./routes'));
+app.use(express.urlencoded({ extended: true }));
+app.use(require('./routes'));
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/userdb', {
-//   useFindAndModify: false,
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/expression-web', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/expression-web', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-// mongoose.set('useCreateIndex', true);
+// Use this to log mongo queries being executed!
 mongoose.set('debug', true);
-
-// app.post('/submit', ({ body }, res) => {
-//   User.create(body)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`App running on port ${PORT}!`);
-// });
 
 app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));

@@ -4,7 +4,7 @@ const userController = {
 
     getAllUsers(req, res) { //get all users
         User.find({})
-            .sort({ _id: -1 })
+            //.sort({ _id: -1 })
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);
@@ -18,18 +18,12 @@ const userController = {
             .catch(err => res.status(400).json(err));
     },
 
-    getUserById({ params }, res) { //get a user by id 
+    getUserById({ params }, res) { //get a user by id populate thoughts & friends
         User.findOne({ _id: params.id })
-            // .populate({
-            //     path: 'thoughts friends', //populate thought and friends
-            //     select: '-__v'
-            // })
-            // .select('-__v')
+            .populate({ path: 'thoughts', select: '-__v' })
+            .populate({ path: 'friends', select: '-__v' })
             .then(dbUserData => res.json(dbUserData))
-            .catch(err => {
-                console.log(err);
-                res.sendStatus(400);
-            });
+            .catch(err => { res.sendStatus(400); });
     },
 
     updateUserById({ params, body }, res) { //update a user by id

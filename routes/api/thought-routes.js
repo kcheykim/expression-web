@@ -2,7 +2,9 @@ const router = require('express').Router();
 const {
     createThought,
     getAllThoughts,
-    //removeThought,
+    getThoughtById,
+    updateThoughtById,
+    removeThoughtById
     //addReply,
     // removeReply
 } = require('../../controllers/thought-controller');
@@ -10,21 +12,13 @@ const {
 router //Set up GET all and POST at /api/thoughts
     .route('/')
     .get(getAllThoughts) //GET all thoughts
-    .post(createThought); //POST a new thought 
+    .post(createThought); //POST a new thought {"thoughtText": "", "username": "", "userId": ""}
 
-//(don't forget to push the created thought's _id to the associated user's thoughts array field)
-// example data
-// {
-//     "thoughtText": "Here's a cool thought...",
-//     "username": "lernantino",
-//     "userId": "5edff358a0fcb779aa7b118b"
-// }
-
-// router //Set up GET one, PUT, and DELETE at /api/users/:id
-//     .route('/:id')
-//     .get(getThoughtById) //GET a single thought by _id
-//     .put(updateThoughtById) //PUT - upadate thought by its _id
-//     .delete(deleteThoughtById); //DELETE - remove thought by its _id
+router //Set up GET one, PUT, and DELETE at /api/users/:id
+    .route('/:id')
+    .get(getThoughtById) //GET a single thought by _id
+    .put(updateThoughtById) //PUT - upadate thought by its _id
+    .delete(removeThoughtById); //DELETE - remove thought by its _id
 
 
 // router //Set up PUT and DELETE /api/thoughts/:thoughtId/reactions

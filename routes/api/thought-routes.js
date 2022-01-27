@@ -4,9 +4,9 @@ const {
     getAllThoughts,
     getThoughtById,
     updateThoughtById,
-    removeThoughtById
-    //addReply,
-    // removeReply
+    removeThoughtById,
+    createReaction,
+    removeReaction
 } = require('../../controllers/thought-controller');
 
 router //Set up GET all and POST at /api/thoughts
@@ -14,16 +14,16 @@ router //Set up GET all and POST at /api/thoughts
     .get(getAllThoughts) //GET all thoughts
     .post(createThought); //POST a new thought {"thoughtText": "", "username": "", "userId": ""}
 
-router //Set up GET one, PUT, and DELETE at /api/users/:id
+router //Set up GET one, PUT, and DELETE at /api/thoughts/:id
     .route('/:id')
     .get(getThoughtById) //GET a single thought by _id
     .put(updateThoughtById) //PUT - upadate thought by its _id
     .delete(removeThoughtById); //DELETE - remove thought by its _id
 
 
-// router //Set up PUT and DELETE /api/thoughts/:thoughtId/reactions
-//     .route('/:thoughtId/:reactions')
-//     .post(createReaction) //POSt - create a reaction stored in a single thought's reactions array
-//     .delete(removeReaction); //DELETE - pull and remove a reaction by the reaction's reactionId
+router //Set up PUT and DELETE /api/thoughts/:thoughtId/reactions
+    .route('/:thoughtId/:reactions')
+    .post(createReaction) //POST - create a reaction stored in a single thought's reactions array
+    .delete(removeReaction); //DELETE - pull and remove a reaction by the reaction's reactionId
 
 module.exports = router;

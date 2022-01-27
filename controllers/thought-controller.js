@@ -36,24 +36,53 @@ const thoughtController = {
             })
             .catch(err => res.status(400).json(err));
     },
+    removeThoughtById({ params }, res) {
+        Thought.findOneAndDelete({ _id: params.id })
+            .then(deletedThought => {
+                if (!deletedThought) {
 
-    // removeThoughtById({ params }, res) { //remove thought by id
-    //     Thought.findOneAndDelete({ _id: params.id })
-    //         .then(dbThoughtData => res.json(dbThoughtData))
-    //         .catch(err => res.json(err));
+                    return res.status(404).json({ message: 'No thought with this id!' });
+                }
+                return User.findOneAndUpdate({ thoughts: params.id }, { $pull: { thoughts: params.id } }, { new: true });
+            })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'No user found with this id!' });
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.json(err));
+    },
 
-    // },
+    createReaction({ params, body }, res) { //create a reaction stored in a single thought's reactions array
+        User.findOneAndUpdate({ _id: params.thoughtId }, { $push: { reactions: body } }, { new: true, runValidators: true })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'No user found with this id!' });
+                    return;
+                }
+                res.json(dbUserData);
+            }).catch(err => json(err));
+    },
 
-    removeThoughtById({ params }, res) { //remove a user by id
-        User.findOneAndDelete({ _id: params.id })
-            .then(dbThoughtData => res.json(dbThoughtData))
+    removeReaction({ params }, res) { //pull and remove a reaction by the reaction's reactionId
+        User.findOneAndDelete({ _id: params.thoughtId })
+            .then(deletedThought => {
+                if (!deletedThought) {
+                    return res.status(404).json({ message: 'No user with this id!' });
+                }
+                return User.findOneAndUpdate({ _id: params.thoughtId }, { $pull: { reactions: params.reactions } }, { new: true });
+            })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'No user found with this id!' });
+                    return;
+                }
+                res.json(dbUserData);
+            })
             .catch(err => res.json(err));
     }
-    // removeReply({ params }, res) {
-    //     Comment.findOneAndUpdate({ _id: params.commentId }, { $pull: { replies: { replyId: params.replyId } } }, { new: true })
-    //         .then(dbPizzaData => res.json(dbPizzaData))
-    //         .catch(err => json(err));
-    // }
 };
 
 module.exports = thoughtController;

@@ -1,14 +1,47 @@
-# expression-web
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+# Expression Web
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+The Expression Web is a social media with api for social network using NoSQL database. When the Express Web application starts on the server, the Mongoose models of users and thoughts are synced to the MongoDB database. The web expression (social network) API can GET, POST, PUT, and DELETE routes for users, their thoughts, adding friends to their list, and save reactions to thoughts. This application showcase the use of MongoDB or NoSQL to create a social or expression of network or web.
+
+#### This page is licensed under (click badge for license page): 
+[![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Built With
+* Node.js
+* Express.js
+* NoSQL - MongoDB
+* Mongoose
+* Insomnia
+
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license) 
+* [Contributing](#contributing) 
+* [Questions](#questions)
+
+## Installation
+Ensure that you have mongoDB by running `mongod` at the command prompt. <br />
+`$git clone https://github.com/kcheykim/expression-web.git` <br />
+`$npm i` <br />
+`$npm start`
+
+## Usage
+Here are the images and links of the pages: <br />
+![web-expression](./assets/images/web-expression.gif?raw=true)<br />
+https://watch.screencastify.com/v/o7bcSn37X3yCfH9jNwp5
+
+## Credits
+Here are the list of collaborators:  
+Kosal Cheykim
+
+## License
+Notice: This license is covered under (https://opensource.org/licenses/MIT)
+
+## Contributing
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+
+## Questions
+More Questions? Contact me via:  
+GitHub: [Kosal Cheykim GitHub](https://github.com/kcheykim) 
+Email: [kosalcheykim@gmail.com](mailto:kosalcheykim@gmail.com)

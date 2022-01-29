@@ -4,10 +4,8 @@ const userController = {
 
     getAllUsers(req, res) { //get all users
         User.find({})
-            //.sort({ _id: -1 })
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
-                console.log(err);
                 res.status(400).json(err);
             });
     },
@@ -43,17 +41,6 @@ const userController = {
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err));
     },
-
-    // addNewFriend({ params, body }, res) {
-    //     User.findOneAndUpdate({ _id: params.userId }, { $addToSet: { friends: body } }, { runValidators: true, new: true })
-    //         .then(dbUserData => {
-    //             if (!dbUserData) {
-    //                 return res.status(404).json({ message: 'No user with this id!' });
-    //             }
-    //             res.json(dbUserData);
-
-    //         }).catch(err => { res.status(500).json });
-    //},
 
     addNewFriend({ params }, res) {
         User.findOneAndUpdate({

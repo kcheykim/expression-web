@@ -1,6 +1,6 @@
 # Expression Web
 
-The Expression Web is a social media with api for social network using NoSQL database. When the Express Web application starts on the server, the Mongoose models of users and thoughts are synced to the MongoDB database. The web expression (social network) API can GET, POST, PUT, and DELETE routes for users, their thoughts, adding friends to their list, and save reactions to thoughts. This application showcase the use of MongoDB or NoSQL to create a social or expression of network or web.
+The Expression Web is a social media with API for social network using NoSQL database. When the Expression Web application starts on the server, the Mongoose models of users and thoughts are synced to the MongoDB database. The web expression (social network) API can GET, POST, PUT, and DELETE routes for users, their thoughts, adding friends to their list, and save reactions to thoughts. This application showcases the use of MongoDB or NoSQL to create a social or expression of network or web.
 
 #### This page is licensed under (click badge for license page): 
 [![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -29,7 +29,7 @@ Ensure that you have mongoDB by running `mongod` at the command prompt. <br />
 ## Usage
 Here are the images and links of the pages: <br />
 ![web-expression](./assets/images/web-expression.gif?raw=true)<br />
-https://watch.screencastify.com/v/o7bcSn37X3yCfH9jNwp5
+https://watch.screencastify.com/v/kolYRAyjGv8bEVnteLBZ
 
 ## Credits
 Here are the list of collaborators:  
